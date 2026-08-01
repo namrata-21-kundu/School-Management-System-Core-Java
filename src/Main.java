@@ -1,4 +1,10 @@
-import java.util.Scanner ;
+import java.util.Scanner;
+
+import model.Student;
+import model.Teacher;
+import service.School;
+import exception.InvalidMarksException;
+
 public class Main {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
@@ -86,11 +92,29 @@ public class Main {
                                 System.out.print("Enter Subject Name: ");
                                 String subject = sc.nextLine();
 
-                                System.out.print("Enter Marks: ");
+                                /*System.out.print("Enter Marks: ");
                                 int marks = sc.nextInt();
                                 sc.nextLine();   // consume newline
 
-                                student.addMarks(subject, marks);
+                                student.addMarks(subject, marks);*/
+
+                                while (true) {
+                                    try {
+                                        System.out.print("Enter Marks: ");
+                                        int marks = sc.nextInt();
+                                        sc.nextLine();
+
+                                        if (marks < 0 || marks > 100) {
+                                            throw new InvalidMarksException("Marks should be between 0 and 100.");
+                                        }
+
+                                        student.addMarks(subject, marks);
+                                        break;
+
+                                    } catch (InvalidMarksException e) {
+                                        System.out.println(e.getMessage());
+                                    }
+                                }
                                 }
 
                                 school.addStudent(student);
@@ -105,6 +129,7 @@ public class Main {
                             case "search":
                                 System.out.print("Enter Roll No: ");
                                 int searchRoll = sc.nextInt();
+                                sc.nextLine();
                                 Student foundStudent = school.searchStudent(searchRoll);
                                 if (foundStudent != null) {
                                     System.out.println("\nStudent Found:");
@@ -164,23 +189,38 @@ public class Main {
                                         break;
                                     
                                     case 4:
+                                        
                                         System.out.print("Enter Subject: ");
                                         String subject = sc.nextLine();
 
-                                        System.out.print("Enter New Marks: ");
-                                        int newMarks = sc.nextInt();
-                                        sc.nextLine();
+                                        int newMarks;
 
-                                        updateStudent.updateMarks(subject, newMarks);
+                                        while (true) {
+                                            try {
+                                                System.out.print("Enter New Marks: ");
+                                                newMarks = sc.nextInt();
+                                                sc.nextLine();
 
-                                        System.out.println("Marks Updated.");
+                                                if (newMarks < 0 || newMarks > 100) {
+                                                    throw new InvalidMarksException("Marks should be between 0 and 100.");
+                                                }
+
+                                                updateStudent.updateMarks(subject, newMarks);
+                                                System.out.println("Marks Updated.");
+                                                break;
+
+                                            } catch (InvalidMarksException e) {
+                                                System.out.println(e.getMessage());
+                                            }
+                                        }
                                         break;
-
-                                        default:
-                                            System.out.println("Invalid Choice.");
-                                    }
-
+                                    
+                                    default:
+                                    System.out.println("Invalid Choice.");
                                     break;
+                                } 
+
+                                break; 
 
                             case "delete":
                                 System.out.print("Enter Roll No: ");

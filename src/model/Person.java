@@ -1,5 +1,6 @@
+package model;
 //abstraction
-abstract class Person {     
+public abstract class Person {     
 
     //encapsulation
     protected int id;

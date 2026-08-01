@@ -1,3 +1,9 @@
+package service;
+
+import model.Student;
+import model.Teacher;
+
+
 import java.util.ArrayList;
 
 public class School {
