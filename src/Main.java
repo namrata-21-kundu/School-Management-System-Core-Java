@@ -42,6 +42,9 @@ public class Main {
 
         School school = new School();
 
+        //testing file reader
+        //school.loadStudentsFromFile();
+
         String choice;
 
         do{
@@ -56,6 +59,9 @@ public class Main {
             switch(choice){
 
                 case "STUDENT":
+                    //laods previous data
+                    school.loadStudentsFromFile();
+                    school.viewStudents();
                     String studentChoice;
                     do{
                         System.out.println("\n===== STUDENT MANAGEMENT =====");
@@ -69,7 +75,7 @@ public class Main {
                         studentChoice = sc.nextLine().toLowerCase();
 
                         switch (studentChoice) {
-
+                            
                             case "add":
                                 System.out.print("Enter Name: ");
                                 String sName = sc.nextLine();
@@ -322,7 +328,8 @@ public class Main {
                     break;
 
                 case "EXIT":    //main
-                    System.out.println("Exiting Program...");
+                    school.saveStudentsToFile();
+                    System.out.println("Exiting School Management System...");
                     break;
 
                 default:
