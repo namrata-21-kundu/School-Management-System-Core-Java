@@ -1,173 +1,189 @@
-# 🎓 School Management System (Core Java)
+# 🎓 School Management System
 
-A console-based School Management System built using Java to manage students, teachers, and academic records. The project demonstrates core Object-Oriented Programming (OOP) concepts, custom exception handling, and Java Collections through a menu-driven application.
+> A console-based **School Management System** developed in **Java** to demonstrate the core principles of **Object-Oriented Programming (OOP)**, **Exception Handling**, **Collections Framework**, and **File Handling**. The application provides separate modules for managing students and teachers through a menu-driven interface.
+
+![Java](https://img.shields.io/badge/Java-17-orange?style=for-the-badge&logo=openjdk)
+![OOP](https://img.shields.io/badge/OOP-Concepts-blue?style=for-the-badge)
+![Collections](https://img.shields.io/badge/Collections-ArrayList%20%7C%20HashMap-green?style=for-the-badge)
+![File Handling](https://img.shields.io/badge/File-Handling-yellow?style=for-the-badge)
+![Exception Handling](https://img.shields.io/badge/Custom-Exception-red?style=for-the-badge)
+
 
 ---
 
-## 🚀 Features
+## 📌 Features
 
 ### 👨‍🎓 Student Management
-
-* Add new students
-* View all students
-* Search students by roll number
-* Update student details
-* Remove students
+- Add new students
+- View all student records
+- Search students by Roll Number
+- Update student details
+- Delete student records
+- Store subject-wise marks using **HashMap**
+- Automatically calculate average marks and grade
 
 ### 👩‍🏫 Teacher Management
+- Add new teachers
+- View all teacher records
+- Search teachers by Subject
+- Delete teacher records
 
-* Add new teachers
-* View all teachers
-* Search teachers
-* Remove teachers
-
-### 📚 Academic Management
-
-* Assign subjects
-* Record student marks
-* Calculate grades
-* Generate report cards
+### 💾 File Handling
+- Save student records to `students.txt`
+- Save teacher records to `teachers.txt`
+- Automatically load previously saved records
 
 ### ⚠️ Exception Handling
-
-* Duplicate student entries
-* Invalid roll numbers
-* Invalid marks input
-* Student not found
-* Teacher not found
+- Custom exception (`InvalidMarksException`)
+- Validates user-entered marks
+- Prevents invalid marks (less than 0 or greater than 100)
 
 ---
 
-## 🛠️ Technologies Used
-
-* Java
-* Object-Oriented Programming (OOP)
-* Exception Handling
-* Java Collections Framework
-
-  * ArrayList
-  * HashMap
-
----
-
-## 🧩 OOP Concepts Implemented
-
-### 🔒 Encapsulation
-
-* Private data members
-* Public getters and setters
-
-### 🧬 Inheritance
-
-* `Student` extends `Person`
-* `Teacher` extends `Person`
-
-### 🔄 Polymorphism
-
-* Method overriding using `displayInfo()`
-
-### 🎭 Abstraction
-
-* Abstract `Person` class
-
-### ⚡ Exception Handling
-
-* Custom exceptions for application-specific errors
-
----
-
-## 📂 Project Structure
+# 🏗️ Project Structure
 
 ```text
-src/
+School_Management_System/
 │
-├── Person.java
-├── Student.java
-├── Teacher.java
-├── School.java
+├── data/
+│   ├── students.txt
+│   └── teachers.txt
 │
-├── exceptions/
-│   ├── StudentNotFoundException.java
-│   ├── TeacherNotFoundException.java
-│   └── InvalidMarksException.java
+├── src/
+│   ├── exception/
+│   │   └── InvalidMarksException.java
+│   │
+│   ├── model/
+│   │   ├── Person.java          (Abstract Class)
+│   │   ├── Student.java
+│   │   └── Teacher.java
+│   │
+│   ├── service/
+│   │   └── School.java
+│   │
+│   └── Main.java
 │
-└── Main.java
+├── .gitignore
+└── README.md
 ```
 
 ---
 
-## 🔄 System Flow
+# 🛠️ Technologies Used
+
+- Java
+- Object-Oriented Programming (OOP)
+- Java Collections Framework
+  - ArrayList
+  - HashMap
+- FileReader / FileWriter
+- BufferedReader / BufferedWriter
+- Custom Exception Handling
+
+---
+
+# 📚 OOP Concepts Implemented
+
+- ✅ Abstract Class (`Person`)
+- ✅ Inheritance (`Student` and `Teacher` extend `Person`)
+- ✅ Encapsulation
+- ✅ Abstraction
+- ✅ Method Overriding
+- ✅ Polymorphism
+- ✅ Constructors
+- ✅ Packages
+
+---
+
+# 📂 Data Structures Used
+
+| Data Structure | Purpose |
+|---------------|---------|
+| **ArrayList** | Stores Student and Teacher objects during program execution |
+| **HashMap<String, Integer>** | Stores subject-wise marks for each student |
+
+---
+
+# 🚀 Getting Started
+
+## Clone the Repository
+
+```bash
+git clone https://github.com/namrata-21-kundu/School-Management-System.git
+```
+
+## Navigate to the Project
+
+```bash
+cd School-Management-System
+```
+
+## Compile the Project
+
+```bash
+javac -d out src/**/*.java
+```
+
+## Run the Application
+
+```bash
+java -cp out Main
+```
+
+> **Note:** Make sure Java JDK (17 or above) is installed and added to your system PATH.
+
+---
+
+# 💻 Sample Workflow
 
 ```text
-Start
-  │
-  ▼
 Main Menu
-  │
-  ├── Student Management
-  │      ├── Add Student
-  │      ├── Search Student
-  │      ├── View Students
-  │      └── Delete Student
-  │
-  ├── Teacher Management
-  │      ├── Add Teacher
-  │      ├── Search Teacher
-  │      ├── View Teachers
-  │      └── Delete Teacher
-  │
-  ├── Academic Management
-  │      ├── Add Marks
-  │      ├── Calculate Grade
-  │      └── Generate Report Card
-  │
-  └── Exit
+│
+├── STUDENT
+│   ├── Add
+│   ├── View
+│   ├── Search
+│   ├── Update
+│   ├── Delete
+│   └── Back
+│
+├── TEACHER
+│   ├── Add
+│   ├── View
+│   ├── Search
+│   ├── Delete
+│   └── Back
+│
+└── EXIT
 ```
 
 ---
 
-## 📊 Class Diagram
+# 📚 Learning Outcomes
 
-```text
-              Person (Abstract)
-                    │
-       ┌────────────┴────────────┐
-       │                         │
-    Student                  Teacher
+This project demonstrates:
 
-         School
-            │
-    ┌───────┴───────┐
-    │               │
-Students       Teachers
-(ArrayList)   (ArrayList)
-```
+- Object-Oriented Programming in Java
+- Abstract Classes and Inheritance
+- Collections Framework (`ArrayList`, `HashMap`)
+- Custom Exception Handling
+- File Handling using BufferedReader and BufferedWriter
+- CRUD Operations
+- Package-based Project Organization
 
 ---
 
-## 📚 Learning Outcomes
+# 👨‍💻 Author
 
-* Class and Object Design
-* Inheritance & Polymorphism
-* Abstract Classes
-* Custom Exception Creation
-* Collection Framework Usage
-* Menu-Driven Application Development
-* Real-World Object Modeling
+**Namrata Kundu**
 
----
+### Contact
 
-## 🔮 Future Enhancements
-
-* File Handling for Data Persistence
-* JDBC + MySQL Integration
-* Spring Boot REST APIs
-* Authentication & Authorization
-* GUI Development
-* Web-Based Dashboard
+- **GitHub:** https://github.com/namrata-21-kundu
+- **LinkedIn:** https://www.linkedin.com/in/namrata-21-kundu/
 
 ---
 
-## 👨‍💻 Author
+# 📜 License
 
-Developed as a Java OOP and Exception Handling project for learning, academic practice, and portfolio building.
+This project is licensed under the **MIT License**.
