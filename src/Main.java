@@ -74,8 +74,25 @@ public class Main {
                                 System.out.print("Enter Id: ");
                                 int sid = sc.nextInt();
                                 sc.nextLine();
-
+                                
                                 Student student = new Student(sid, sName, sAge, rollNo);
+                                
+                                System.out.print("How many subjects? ");
+                                int n = sc.nextInt();
+                                sc.nextLine();   // consume newline
+
+                                for (int i = 1; i <= n; i++) {
+
+                                System.out.print("Enter Subject Name: ");
+                                String subject = sc.nextLine();
+
+                                System.out.print("Enter Marks: ");
+                                int marks = sc.nextInt();
+                                sc.nextLine();   // consume newline
+
+                                student.addMarks(subject, marks);
+                                }
+
                                 school.addStudent(student);
 
                                 System.out.println("Student Added Successfully.");
