@@ -19,6 +19,10 @@ public class Teacher extends Person {
         return subject;
     }
     
+    public double getSalary(){
+        return salary;
+    }
+    
     @Override
     public void displayInfo(){
         System.out.println("---Teacher Details---");

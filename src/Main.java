@@ -43,7 +43,7 @@ public class Main {
         School school = new School();
 
         //testing file reader
-        //school.loadStudentsFromFile();
+        school.loadStudentsFromFile();
 
         String choice;
 
@@ -252,7 +252,10 @@ public class Main {
                     break;
 
                     case "TEACHER":
-
+                        //load previous data
+                    school.loadTeachersFromFile();
+                    school.viewTeachers();    // Show previous records immediately
+                    
                     String teacherChoice;
                     do {
                         System.out.println("\n===== TEACHER MANAGEMENT =====");
@@ -318,6 +321,7 @@ public class Main {
                                 break;
 
                             case "back":
+                                school.saveTeachersToFile();
                                 break;
 
                             default:

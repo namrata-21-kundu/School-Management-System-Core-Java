@@ -85,7 +85,7 @@ public class School {
 public void loadStudentsFromFile() {
     students.clear();
 
-    System.out.println("===PREVIOUS STUDENT RECORDS===");
+    //System.out.println("===PREVIOUS STUDENT RECORDS===");
     try (BufferedReader reader = new BufferedReader(new FileReader("data/students.txt"))) {
 
         String line;
@@ -146,4 +146,56 @@ public void loadStudentsFromFile() {
         return false;
     }
 
+//save teacher details
+public void saveTeachersToFile() {
+
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter("data/teachers.txt"))) {
+
+        for (Teacher teacher : teachers) {
+
+            writer.write(
+                teacher.getId() + "," +
+                teacher.getName() + "," +
+                teacher.getAge() + "," +
+                teacher.getSubject() + "," +
+                teacher.getSalary()
+            );
+
+            writer.newLine();
+        }
+
+        System.out.println("Teacher records saved successfully.");
+
+    } catch (IOException e) {
+        System.out.println("Error saving teacher records.");
+    }
+}
+
+public void loadTeachersFromFile() {
+
+    teachers.clear();
+
+    try (BufferedReader reader = new BufferedReader(new FileReader("data/teachers.txt"))) {
+
+        String line;
+
+        while ((line = reader.readLine()) != null) {
+
+            String[] data = line.split(",");
+
+            int id = Integer.parseInt(data[0]);
+            String name = data[1];
+            int age = Integer.parseInt(data[2]);
+            String subject = data[3];
+            double salary = Double.parseDouble(data[4]);
+
+            Teacher teacher = new Teacher(id, name, age, subject, salary);
+
+            teachers.add(teacher);
+        }
+
+    } catch (IOException e) {
+        System.out.println("No previous teacher records found.");
+    }
+}
 }

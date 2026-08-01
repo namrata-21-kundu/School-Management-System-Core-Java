@@ -52,10 +52,16 @@ public class Student extends Person{
 
     @Override
     public void displayInfo(){
+        
         System.out.println("---Student Details---");
         System.out.println("Name: "+name);
         System.out.println("Age: "+age);
         System.out.println("Roll No: "+rollNo);
+
+        if (marks.isEmpty()) {
+        System.out.println("Marks: Not Available");
+        return;
+        }
 
         System.out.println("\nMarks: ");
 
