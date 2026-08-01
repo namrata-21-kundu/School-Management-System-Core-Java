@@ -15,6 +15,18 @@ public class Student extends Person{
         return rollNo;
     }
 
+    public void setRollNo(int rollNo){
+    this.rollNo = rollNo;
+    }
+    
+    public void setName(String name) {
+    this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public void addMarks(String subject, int mark){
         marks.put(subject,mark);
     }
@@ -33,6 +45,10 @@ public class Student extends Person{
         return (double)sum/marks.size();
     }
 
+    public void updateMarks(String subject, int marks) {
+    this.marks.put(subject, marks);
+    }
+
     @Override
     public void displayInfo(){
         System.out.println("---Student Details---");
@@ -46,6 +62,28 @@ public class Student extends Person{
             System.out.println(subject + " : " +marks.get(subject));
         }
 
-        System.out.println("Average: " + calculateAverage());
+        System.out.printf("Average : %.2f%n", calculateAverage());
+        System.out.println("Grade   : " + calculateGrade());
+    }
+
+    public String calculateGrade() {
+
+    double average = calculateAverage();
+
+    if (average >= 90) {
+        return "A";
+    } 
+    else if (average >= 80) {
+        return "B";
+    } 
+    else if (average >= 70) {
+        return "C";
+    } 
+    else if (average >= 60) {
+        return "D";
+    } 
+    else {
+        return "F";
+    }
     }
 }

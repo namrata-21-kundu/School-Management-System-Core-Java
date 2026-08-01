@@ -56,9 +56,9 @@ public class Main {
                         System.out.println("add");
                         System.out.println("view");
                         System.out.println("search");
+                        System.out.println("update");
                         System.out.println("delete");
                         System.out.println("back");
-
                         System.out.print("Enter Choice: ");
                         studentChoice = sc.nextLine().toLowerCase();
 
@@ -76,7 +76,7 @@ public class Main {
                                 sc.nextLine();
                                 
                                 Student student = new Student(sid, sName, sAge, rollNo);
-                                
+
                                 System.out.print("How many subjects? ");
                                 int n = sc.nextInt();
                                 sc.nextLine();   // consume newline
@@ -115,6 +115,73 @@ public class Main {
                                 }
                                 break;
                             
+                            case "update":
+
+                                System.out.print("Enter Roll No: ");
+                                int updateRoll = sc.nextInt();
+                                sc.nextLine();
+
+                                Student updateStudent = school.searchStudent(updateRoll);
+
+                                if (updateStudent == null) {
+                                    System.out.println("Student Not Found.");
+                                    break;
+                                }
+
+                                System.out.println("\n1. Update Name");
+                                System.out.println("2. Update Age");
+                                System.out.println("3. Update Roll No");
+                                System.out.println("4. Update Marks");
+                                System.out.print("Enter Choice: ");
+                                int updateChoice = sc.nextInt();
+                                sc.nextLine();
+
+                                switch (updateChoice) {
+
+                                    case 1:
+                                        System.out.print("Enter New Name: ");
+                                        String newName = sc.nextLine();
+                                        updateStudent.setName(newName);
+                                        System.out.println("Name Updated.");
+                                        break;
+
+                                    case 2:
+                                        System.out.print("Enter New Age: ");
+                                        int newAge = sc.nextInt();
+                                        sc.nextLine();
+                                        updateStudent.setAge(newAge);
+                                        System.out.println("Age Updated.");
+                                        break;
+
+                                    case 3:
+                                        System.out.print("Enter New Roll No: ");
+                                        int newRoll = sc.nextInt();
+                                        sc.nextLine();
+
+                                        updateStudent.setRollNo(newRoll);
+
+                                        System.out.println("Roll Number Updated.");
+                                        break;
+                                    
+                                    case 4:
+                                        System.out.print("Enter Subject: ");
+                                        String subject = sc.nextLine();
+
+                                        System.out.print("Enter New Marks: ");
+                                        int newMarks = sc.nextInt();
+                                        sc.nextLine();
+
+                                        updateStudent.updateMarks(subject, newMarks);
+
+                                        System.out.println("Marks Updated.");
+                                        break;
+
+                                        default:
+                                            System.out.println("Invalid Choice.");
+                                    }
+
+                                    break;
+
                             case "delete":
                                 System.out.print("Enter Roll No: ");
                                 int deleteRoll = sc.nextInt();
